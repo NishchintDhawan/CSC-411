@@ -16,12 +16,25 @@ df_2022 = pd.DataFrame({
 })
 
 
-fig = px.scatter(df_2022, x="Place", y="Amt", size="Exits",height=700, hover_name='Place')
+fig = px.scatter(df_2022, x="Place", y="Amt", size="Exits",height=600, hover_name='Place', labels={
+                     "Place": "Neighborhood",
+                     "Amt": "Amount in CAD",
+                 })
 
 fig.update_layout(
     yaxis_range = [ 0, 100000 ],
-    width=650, 
+    width=700, title=dict(
+        text='<b>Residential</b>',
+        x=0.50,
+        y=0.93,
+        font=dict(
+            family="Arial",
+            size=16,
+            color='#000000'
+        ))
 )
+fig.update_xaxes(tickfont = dict(size=13), titlefont=dict(size=13), title_font_color="red")
+fig.update_yaxes(tickfont = dict(size=13), titlefont=dict(size=13), title_font_color="red")
 
 colors = {
     'background': '#111111',
@@ -38,13 +51,11 @@ app.layout = html.Div([
     html.Div([
         dcc.Graph(id='res-time-series'),
         dcc.Graph(id='bus-time-series'),
-        dcc.Graph(id='lightind-time-series'),
-    ], style={'display': 'inline-block', 'width': '20%'}),
-     html.Div([
-        dcc.Graph(
-            id='type-bar',
-            style={'display': 'inline-block', 'width': '80%'}),
-    ], style={'display': 'inline-block', 'width': '30%', 'padding': '0'}),
+    ], style={'display': 'inline-block', 'width': '20%', 'paddingBottom' : '47px'}),
+    html.Div([
+       dcc.Graph(id='lightind-time-series', style={'width': '100%'}),
+       dcc.Graph(id='type-bar', style={'width': '105%'}),
+    ], style={'display': 'inline-block', 'width': '20%', 'paddingBottom' : '56px', 'marginLeft': '35px'}),
 ])
 
 
@@ -60,17 +71,20 @@ def update_res_timeseries(hoverData):
         val = hoverData['points'][0]['x']
     dff = base_df.loc[base_df['place'] == val]
     df = dff.loc[dff['type'] == 'residential']
-    fig = px.scatter(df, x="year", y="amt",height=300, hover_name='type')
+    fig = px.scatter(df, x="year", y="amt",height=300, hover_name='type', labels={
+                     "year": "Year",
+                     "amt": "Amount in CAD",
+                 })
     fig.update_traces(mode='lines+markers')
-    fig.update_xaxes(showgrid=False, dtick=2)
-    fig.update_yaxes(type='linear', range=[0, 8000], dtick=2000)
+    fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_yaxes(type='linear', range=[0, 8000], dtick=2000, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
     fig.update_layout(height=250, margin={'l': 20, 'b': 30, 'r': 10, 't': 20}, title=dict(
         text='<b>Residential</b>',
         x=0.60,
         y=0.97,
         font=dict(
             family="Arial",
-            size=12,
+            size=13,
             color='#000000'
         )))
     return fig    
@@ -87,23 +101,24 @@ def update_bus_timeseries(hoverData):
         val = hoverData['points'][0]['x']
     dff = base_df.loc[base_df['place'] == val]
     df = dff.loc[dff['type'] == 'business']
-    fig = px.scatter(df, x="year", y="amt",height=300, hover_name='type')
+    fig = px.scatter(df, x="year", y="amt",height=300, hover_name='type', labels={
+                     "year": "Year",
+                     "amt": "Amount in CAD",
+                 })
     fig.update_traces(mode='lines+markers')
-    fig.update_xaxes(showgrid=False, dtick=2)
-    fig.update_yaxes(type='linear', range = [0, 50000], dtick=20000)
-    fig.add_annotation(x=0, y=1.3, xanchor='left', yanchor='bottom',
-                       xref='paper', yref='paper', showarrow=False, align='left',
-                       text='Business')
-    fig.update_layout(height=250, margin={'l': 20, 'b': 30, 'r': 10, 't': 20},title=dict(
+    fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_yaxes(type='linear', range = [0, 50000], dtick=20000, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_layout(height=250, margin={'l': 20, 'b': 30, 'r': 10, 't': 30},title=dict(
         text='<b>Business</b>',
         x=0.60,
-        y=0.96,
+        y=0.93,
         font=dict(
             family="Arial",
-            size=12,
+            size=13,
             color='#000000'
         )))
     return fig    
+
 
 @app.callback(
     Output('lightind-time-series', 'figure'),
@@ -117,17 +132,20 @@ def update_light_timeseries(hoverData):
         val = hoverData['points'][0]['x']
     dff = base_df.loc[base_df['place'] == val]
     df = dff.loc[dff['type'] == 'lightindustry']
-    fig = px.scatter(df, x="year", y="amt",height=200, hover_name='type')
+    fig = px.scatter(df, x="year", y="amt",height=200, hover_name='type', labels={
+                     "year": "<b>Year<b>",
+                     "amt": "Amount in CAD",
+                 },)
     fig.update_traces(mode='lines+markers')
-    fig.update_xaxes(showgrid=False, dtick=2)
-    fig.update_yaxes(type='linear', range = [0, 350000], dtick=50000)
-    fig.update_layout(height=250, margin={'l': 20, 'b': 30, 'r': 10, 't': 35}, title=dict(
+    fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_yaxes(type='linear', range = [0, 350000], dtick=50000, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_layout(height=255, margin={'l': 20, 'b': 50, 'r': 10, 't': 10}, title=dict(
         text='<b>Light Industry</b>',
         x=0.60,
-        y=0.91,
+        y=0.98,
         font=dict(
             family="Arial",
-            size=12,
+            size=13,
             color='#000000'
         )))
     return fig    
@@ -145,16 +163,19 @@ def update_barchart_timeseries(hoverData):
         val = hoverData['points'][0]['x']
     dff = base_df.loc[base_df['place'] == val]
     df = dff.loc[dff['type'] == 'lightindustry']
-    fig = px.bar(df, x="year", y="amt",height=550)
-    fig.update_xaxes(showgrid=False)
-    fig.update_yaxes(range=[50000, 400000])
-    fig.update_layout(margin={'l': 120, 'r': 20, 'b': 250}, title=dict(
+    fig = px.bar(df, x="year", y="amt",height=230, labels={
+                     "year": "Year",
+                     "amt": "Amount in CAD",
+                 })
+    fig.update_xaxes(showgrid=False, tickfont = dict(size=10), titlefont=dict(size=10))
+    fig.update_yaxes(range=[50000, 400000], dtick=50000, tickfont = dict(size=10), titlefont=dict(size=10))
+    fig.update_layout(margin={'l': 20, 'r': 20, 'b': 0, 't': 20}, title=dict(
         text='<b>Bar Chart</b>',
-        x=0.70,
-        y=0.91,
+        x=0.55,
+        y=0.97,
         font=dict(
             family="Arial",
-            size=12,
+            size=13,
             color='#000000'
         )))
     return fig    

@@ -13,3 +13,9 @@
 2022   lightindustry - 102049.682
 
 
+residential,Downtown,3
+business,Downtown, 3
+lightindustry,Downtown,4
+residential,Burnside,6183.46
+business,Burnside,23980.12
+lightindustry,Burnside,308805.12
