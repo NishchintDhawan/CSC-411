@@ -111,7 +111,7 @@ def update_res_timeseries(hoverData):
         y=0.97,
         font=dict(
             family="Arial",
-            size=12,
+            size=10,
             color='#000000'
         )))
     fig.update_traces(hovertemplate='Year: %{x} <br> Amount: <b> %{y} </b>')
@@ -146,7 +146,7 @@ def update_bus_timeseries(hoverData):
         y=0.93,
         font=dict(
             family="Arial",
-            size=13,
+            size=10,
             color='#000000'
         )))
     fig.update_traces(hovertemplate='Year: %{x} <br> Amount: <b> %{y} </b>')
@@ -174,12 +174,12 @@ def update_light_timeseries(hoverData):
     fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
     fig.update_yaxes(type='linear', range = [0, 300000], tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
     fig.update_layout(height=255, margin={'l': 20, 'b': 50, 'r': 10, 't': 10}, title=dict(
-        text='<b>Light Industry</b>',
+        text='Light Industry',
         x=0.60,
         y=0.98,
         font=dict(
             family="Arial",
-            size=12,
+            size=10,
             color='#000000'
         )))
     fig.update_traces(hovertemplate='Year: %{x} <br> Amount: <b> %{y} </b>')
@@ -192,28 +192,27 @@ def update_light_timeseries(hoverData):
     #inputs required for the values to be filtered by. Can use a different dataframe for that.
 )
 def update_barchart_timeseries(hoverData):
-    base_df = pd.read_csv('./test.csv')
+    base_df = pd.read_csv('./emergency_blocks.csv')
     val = 'Downtown'
     if hoverData != None:
         val = hoverData['points'][0]['x']
-    dff = base_df.loc[base_df['place'] == val]
-    df = dff.loc[dff['type'] == 'lightindustry']
-    fig = px.bar(df, x="year", y="amt",height=240, labels={
-                     "year": "Year",
-                     "amt": "Amount in CAD",
+    df = base_df.loc[base_df['place'] == val]
+    fig = px.bar(df, x="type", y="blocks",height=240, labels={
+                     "type": "Type",
+                     "blocks": "Number of Emergency Blocks",
                  })
     fig.update_xaxes(showgrid=False, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
-    fig.update_yaxes(range=[50000, 400000], tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_yaxes(range=[0,5], tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
     fig.update_layout(margin={'l': 30, 'r': 20, 'b': 0, 't': 20}, title=dict(
-        text='Bar Chart',
-        x=0.55,
-        y=0.97,
+        text='Emergency Blocks accross various properties',
+        x=0.521,
+        y=0.99,
         font=dict(
             family="Arial",
-            size=12,
+            size=10,
             color='#000000'
         )))
-    fig.update_traces(hovertemplate='Year: %{x} <br> Amount: <b> %{y} </b>')
+    fig.update_traces(hovertemplate='Year: %{x} <br> Amount: <b> %{y} </b>', marker_line_color = 'blue',  marker_line_width = 5)
     return fig    
     
     

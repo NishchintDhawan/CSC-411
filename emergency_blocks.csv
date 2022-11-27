@@ -1,16 +1,16 @@
-area, type, blocks
-Downtown, residential, 0
-Downtown, business, 0
-Downtown, lightindustry, 0
-Harris Green, residential, 0
-Harris Green, business, 0
-Harris Green, lightindustry, 0
-Victoria West, residential, 3
-Victoria West, business, 1
-Victoria West, lightindustry, 1
-Rock Bay, residential, 0
-Rock Bay, business, 1
-Rock Bay, lightindustry, 0
-James Bay, residential, 1
-James Bay, business, 0
-James Bay, lightindustry, 0
+place,type,blocks
+Downtown,residential,0
+Downtown,business,0
+Downtown,lightindustry,0
+Harris Green,residential,0
+Harris Green,business,0
+Harris Green,lightindustry,0
+Victoria West,residential,3
+Victoria West,business,1
+Victoria West,lightindustry,1
+Rock Bay,residential,0
+Rock Bay,business,1
+Rock Bay,lightindustry,0
+James Bay,residential,1
+James Bay,business,0
+James Bay,lightindustry,0
