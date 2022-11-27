@@ -10,13 +10,13 @@ app = Dash(__name__, external_stylesheets=external_stylesheets)
 
 
 df_2022 = pd.DataFrame({
-    "Place": ["Downtown", "Burnside", "Victoria West", "James Bay", "Rock Bay"],
-    "Amt": [29805.12, 61483.46, 66089.22, 24817.28, 84286.51],
-    "Exits": [3, 1, 2, 5, 1]
+    "Place": ["Downtown","James Bay", "Harris Green" , "Victoria West", "Rock Bay"],
+    "Amt": [95199.71, 31933.15503, 84278.61205, 54624.10574, 66599.85236],
+    "Exits": [0, 1, 0, 5, 1],
+    "SizeVal" : [1, 2, 1, 6, 2]
 })
 
-
-fig = px.scatter(df_2022, x="Place", y="Amt", size="Exits",height=700, hover_name='Place', labels={
+fig = px.scatter(df_2022, x="Place", y="Amt", size="SizeVal",height=700, hover_name='Place', labels={
                      "Place": "Neighborhood",
                      "Amt": "Amount in CAD",
                      "Exits": "Emergency Exits"
@@ -36,8 +36,9 @@ fig.update_layout(
             color='#000000'
         ))
 )
-fig.update_xaxes(tickfont = dict(size=13), titlefont=dict(size=13), title_font_color="red")
-fig.update_yaxes(tickfont = dict(size=13), titlefont=dict(size=13), title_font_color="red")
+fig.update_xaxes(tickfont = dict(size=13), titlefont=dict(size=13))
+fig.update_yaxes(tickfont = dict(size=13), range=[0, 150000], titlefont=dict(size=13))
+
 fig.update_traces(hovertemplate='%{x} <br> <br> Emergency Blocks: <b> %{customdata[2]} </b>')
 
 colors = {
@@ -53,7 +54,7 @@ app.layout = html.Div([
             id='example-graph',
             figure=fig, 
             style={'display': 'inline-block', 'width': '20%'}),
-        ], style={'width': '40%', 'display': 'inline-block', 'paddingLeft': '60px'}),
+        ], style={'width': '50%', 'display': 'inline-block', 'paddingLeft': '60px'}),
         html.Div([
             html.Div(id='text-title', style={'display': 'inline-block', 'marginLeft': '10%', 'display': 'inline-block', 'marginLeft': '14%', 'fontSize': '16px', 'fontWeight': '600'}),
             dcc.Graph(id='res-time-series', style={'width':'85%', 'marginTop': '5%'}),
@@ -96,8 +97,8 @@ def update_res_timeseries(hoverData):
                      "amt": "Amount in CAD",
                  })
     fig.update_traces(mode='lines+markers')
-    fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
-    fig.update_yaxes(type='linear', range=[0, 8000], dtick=2000, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10))
+    fig.update_yaxes(type='linear', range=[0, 8000], dtick=2000, tickfont = dict(size=10), titlefont=dict(size=10))
     fig.update_layout(height=250, margin={'l': 20, 'b': 30, 'r': 10, 't': 20}, title=dict(
         text='Residential',
         x=0.60,
