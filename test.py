@@ -88,8 +88,14 @@ def update_title_text(hoverData):
 def update_res_timeseries(hoverData):
     base_df = pd.read_csv('./test.csv')
     val = 'Downtown'
+    max_v = 8000
+    tick_distance = 1000
     if hoverData != None:
         val = hoverData['points'][0]['x']
+    if val == 'Rock Bay':
+        max_v = 20000
+        tick_distance = 2000
+             
     dff = base_df.loc[base_df['place'] == val]
     df = dff.loc[dff['type'] == 'residential']
     fig = px.scatter(df, x="year", y="amt",height=300, hover_name='type', labels={
@@ -98,7 +104,7 @@ def update_res_timeseries(hoverData):
                  })
     fig.update_traces(mode='lines+markers')
     fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10))
-    fig.update_yaxes(type='linear', range=[0, 8000], dtick=2000, tickfont = dict(size=10), titlefont=dict(size=10))
+    fig.update_yaxes(type='linear', range = [0, max_v], dtick=tick_distance, tickfont = dict(size=10), titlefont=dict(size=10))
     fig.update_layout(height=250, margin={'l': 20, 'b': 30, 'r': 10, 't': 20}, title=dict(
         text='Residential',
         x=0.60,
@@ -119,17 +125,21 @@ def update_res_timeseries(hoverData):
 def update_bus_timeseries(hoverData):
     base_df = pd.read_csv('./test.csv')
     val = 'Downtown'
+    max_v = 100000
+    tick_distance = 10000
     if hoverData != None:
-        val = hoverData['points'][0]['x']
+        val = hoverData['points'][0]['x']    
+        
     dff = base_df.loc[base_df['place'] == val]
     df = dff.loc[dff['type'] == 'business']
     fig = px.scatter(df, x="year", y="amt",height=300, hover_name='type', labels={
                      "year": "Year",
                      "amt": "Amount in CAD",
                  })
+    # range=[0, max_v], dtick=tick_distance,
     fig.update_traces(mode='lines+markers')
     fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
-    fig.update_yaxes(type='linear', range = [0, 50000], dtick=20000, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_yaxes(type='linear', range=[0, max_v], dtick=tick_distance, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
     fig.update_layout(height=250, margin={'l': 20, 'b': 30, 'r': 10, 't': 30},title=dict(
         text='Business',
         x=0.60,
@@ -162,7 +172,7 @@ def update_light_timeseries(hoverData):
                  },)
     fig.update_traces(mode='lines+markers')
     fig.update_xaxes(showgrid=False, dtick=2, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
-    fig.update_yaxes(type='linear', range = [0, 350000], dtick=50000, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_yaxes(type='linear', range = [0, 300000], tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
     fig.update_layout(height=255, margin={'l': 20, 'b': 50, 'r': 10, 't': 10}, title=dict(
         text='<b>Light Industry</b>',
         x=0.60,
@@ -193,7 +203,7 @@ def update_barchart_timeseries(hoverData):
                      "amt": "Amount in CAD",
                  })
     fig.update_xaxes(showgrid=False, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
-    fig.update_yaxes(range=[50000, 400000], dtick=50000, tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
+    fig.update_yaxes(range=[50000, 400000], tickfont = dict(size=10), titlefont=dict(size=10), title_font_color="green")
     fig.update_layout(margin={'l': 30, 'r': 20, 'b': 0, 't': 20}, title=dict(
         text='Bar Chart',
         x=0.55,

@@ -1,0 +1,29 @@
+
+victoria west
+5
+
+l = 1
+r = 3
+b = 1
+
+Downtown
+0
+
+Rock Bay
+1
+b = 1
+
+James Bay
+1
+r = 1
+
+Harris Green
+0
+
+
+James Bay 
+2020 - 4978947/149 = 33415
+2018 - 4262042.97/149 = 28604
+2022 - 6699378.72/153 = 43786
+belleview, dallas, erie, superior, michigan, oswego, montreal, niagara, toronto
+

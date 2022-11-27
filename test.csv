@@ -1,19 +1,46 @@
 year,type,place,amt
-2022,residential,Downtown,3384.19
-2020,residential,Downtown,3101.23
-2018,residential,Downtown,2197.41
-2022,business,Downtown,29805.12
-2020,business,Downtown,30805.12
-2018,business,Downtown,27805.12
-2022,lightindustry,Downtown,298805.12
-2020,lightindustry,Downtown,249805.12
-2018,lightindustry,Downtown,299805.12
-2022,residential,Burnside,6183.46
-2020,residential,Burnside,2805.12
-2018,residential,Burnside,2905.12
-2022,business,Burnside,23980.12
-2020,business,Burnside,26805.12
-2018,business,Burnside,29805.12
-2022,lightindustry,Burnside,308805.12
-2020,lightindustry,Burnside,319805.12
-2018,lightindustry,Burnside,309805.12
+2022,residential,Downtown,2682.86
+2022,business,Downtown,46158.565
+2022,lightindustry,Downtown,236757.8375
+2022,residential,Harris Green,2395.065455
+2022,business,Harris Green,80243.56767
+2022,lightindustry,Harris Green,0
+2022,residential,James Bay,3012.237059
+2022,business,James Bay,43786
+2022,lightindustry,James Bay,0
+2022,residential,Rock Bay,11006.65
+2022,business,Rock Bay,40060.15875
+2022,lightindustry,Rock Bay,148732.7483
+2022,residential,Victoria West,3787.002222
+2022,business,Victoria West,20675.98
+2022,lightindustry,Victoria West,139409.335
+2020,residential,Downtown,2823.127222
+2020,business,Downtown,37991.97917
+2020,lightindustry,Downtown,171960.2433
+2020,residential,Harris Green,2465.638333
+2020,business,Harris Green,40538.46767
+2020,lightindustry,Harris Green,0
+2020,residential,James Bay,2264.927647
+2020,business,James Bay, 33415
+2020,lightindustry,James Bay,0
+2020,residential,Rock Bay,11526.106
+2020,business,Rock Bay,27843.22625
+2020,lightindustry,Rock Bay,102769.1467
+2020,residential,Victoria West,2404.681111
+2020,business,Victoria West,14647.82417
+2020,lightindustry,Victoria West,114742.18
+2018,residential,Downtown,2423.658947
+2018,business,Downtown,42982.25769
+2018,lightindustry,Downtown,181184.8933
+2018,residential,Harris Green,1733.514167
+2018,business,Harris Green,38075.41
+2018,lightindustry,Harris Green,0
+2018,residential,James Bay,3141.779412
+2018,business,James Bay,28604
+2018,lightindustry,James Bay,0
+2018,residential,Rock Bay,8970.386
+2018,business,Rock Bay,26883.56875
+2018,lightindustry,Rock Bay,99104.33
+2018,residential,Victoria West,2234.882222
+2018,business,Victoria West,16017.98667
+2018,lightindustry,Victoria West,105607.87
