@@ -1,1 +1,2 @@
-csc411
+# CSC 411
+Plotly data vizualization project
