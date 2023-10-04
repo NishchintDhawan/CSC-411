@@ -1,2 +1,2 @@
 # CSC 411
-Plotly data vizualization project
+Plotly project which vizualizes property tax data for various years in Victoria.
